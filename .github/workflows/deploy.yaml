@@ -31,7 +31,7 @@ jobs:
         run: |
           sudo apt update && sudo apt install -y sshpass
           sshpass -p "${{ secrets.EC2_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker pull ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
-          docker run -d -p 80:5000 --name my-flask-app ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
+          sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
+          sudo docker run -d -p 80:5000 --name my-flask-app ${{ secrets.DOCKER_USERNAME }}/my-flask-app:latest
           EOF
