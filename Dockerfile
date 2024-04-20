@@ -4,12 +4,13 @@ FROM python:3.8-slim
 # Set the working directory in the container
 WORKDIR /app
 
+COPY . /app
 # Copy the requirements file and install the dependencies
-COPY requirements.txt requirements.txt
+#COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 # Copy the application files to the container
-COPY . .
+#COPY . .
 
 # Expose port 5000 to allow external access
 EXPOSE 5000
